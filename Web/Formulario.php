@@ -1,5 +1,4 @@
 <?php
-
 include("Validaciones.php");
 // Procesar el formulario cuando se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,19 +7,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensaje = $_POST["mensaje"];
     $year = $_POST["year"];
     $contact = $_POST["contact"];
-    $publi = $_POST['publi'];
+    @$publi = $_POST['publi'];
     $ciudades = $_POST["ciudades"];
     $fecha = $_POST["fecha"];
 
     //Comprobaciones
     //Valido el Titulo
     if(ValidarTitulo($titulo) == false){
-        @$error = $error . "<br>-Titulo mal Formatado, hay que tener: 5 Caracteres MIN; Primera Letras Mayusculas";
+        @$errorTitulo = "<br>-Titulo mal Formatado, hay que tener: 5 Caracteres MIN; Primera Letras Mayusculas";
     }
     //Compruebo que Mensaje tiene al menos 50 Caracteres
     if(strlen($mensaje) < 50){
-        @$error = $error . "<br>-El mensaje tiene menos de 50 Caracteres";
+        @$errorMensaje = "<br>-El mensaje tiene menos de 50 Caracteres";
     }
+	$nombre = $_SESSION['user'];
+	$correo = $_SESSION['correo'];
 	$id = session_id();
     // Manejar los archivos subidos
     $archivos = $_FILES["archivos"];
@@ -37,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $rutasArchivos .= "uploads/" . $nuevoNombreArchivo . ",";
             move_uploaded_file($nombreTemporal, "uploads/" . $nuevoNombreArchivo);
         } else {
-           @$error = $error . "<br>-Se permite solo archivos .png";}
+           @$errorImagen = "<br>-Se permite solo archivos .png";}
     }
     //Comprobacion de Errores
-    if(isset($error)){
-        echo $error;
+    if($errorImagen || $errorMensaje || $errorTitulo){
+        
     } else {
 
         //Conecto con la Base de Datos
@@ -52,10 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if($mysqli->connect_errno) {
     		echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
         } else {
-
-			$stmt = $mysqli->prepare("INSERT INTO users (nombre, clave, correo) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $nombre, $clave, $correo);
-            $stmt->execute();
 
             $stmt = $mysqli->prepare("INSERT INTO datos (titulo, correo, mensaje, preferencia, anyocompra, comunidad, fechaHora) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("sssssss", $titulo, $correo, $mensaje, $contact, $year, $ciudades, $fecha);
@@ -104,12 +101,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </fieldset>
 <h1>:Datos Producto:</h1>
 <fieldset>
+	<?php if (!empty(@$errorTitulo)) : ?>
+        <div style="color: #8C1313;"><?php echo @$errorTitulo; ?></div>
+    <?php endif; ?>
     <label for="titulo">Titulo:</label>
-    <input value = "<?php if(isset($_POST['titulo']))echo $_POST['titulo'];?>"
-    id = "titulo" name = "titulo" type = "text" required>
+    <input <?php echo (@$errorTitulo) ? 'class="error"' : ''; ?> value="<?php if(isset($_POST['titulo'])) echo $_POST['titulo']; ?>"
+    id="titulo" name="titulo" type="text" required>
 
+	<?php if (!empty(@$errorMensaje)) : ?>
+        <div style="color: #8C1313;"><?php echo @$errorMensaje; ?></div>
+    <?php endif; ?>
     <label for="mensaje">Mensaje:</label>
-    <textarea name="mensaje" rows="4" required><?php if(isset($mensaje)) echo $mensaje; ?></textarea>
+    <textarea <?php echo (@$errorMensaje) ? 'class="error"' : ''; ?> name="mensaje" rows="4" required><?php if(isset($mensaje)) echo $mensaje; ?></textarea>
 
     <br>
 
@@ -127,8 +130,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br>
 
     <label>Preferencia de Contacto:</label>
-        <input type="radio" id="contact" name="contact" value="correo" <?php if(isset($contact) && $contact === "correo") echo "checked"; ?>>Correo
-		<input type="radio" id="contact" name="contact" value="presencial" <?php if(isset($contact) && $contact === "presencial") echo "checked"; ?>>Presencial
+        <input type="radio" id="contact" name="contact" value="correo" required <?php if(isset($contact) && $contact === "correo") echo "checked"; ?>>Correo
+		<input type="radio" id="contact" name="contact" value="presencial" required <?php if(isset($contact) && $contact === "presencial") echo "checked"; ?>>Presencial
 
     <br>
 
@@ -157,8 +160,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <br>
 
+	<?php if (!empty(@$errorImagen)) : ?>
+        <div style="color: #8C1313;"><?php echo @$errorImagen; ?></div>
+    <?php endif; ?>
     <label for="archivos">Cargar archivos (solo PNG):</label>
-    <input type="file" name="archivos[]" accept=".png" multiple>
+    <input <?php echo (@$errorImagen) ? 'class="error"' : ''; ?> type="file" name="archivos[]" accept=".png" multiple>
 
     <br>
 

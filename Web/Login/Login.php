@@ -3,15 +3,6 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //Confirmo que el Usuario esté Rellenado
-    if ($_POST['usuario'] == "") {
-        @$error = $error . "<br>-Es Obligatorio Rellenar el Campo de Usuario";
-    }
-    //Confirmo que la Contraseña esté Rellenada
-    if ($_POST['clave'] == "") {
-        @$error = $error . "<br>-Es Obligatorio Rellenar el Campo de Contraseña";
-    }
-
     if (isset($error)) {
         echo $error;
         $usuario = $_POST['usuario'];
@@ -48,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$_SESSION["correo"] = $correo;
 			header('Location: http://localhost/MyWeb/Web/Formulario.php');
         } else {
-            echo "Usuario o Contraseña incorrectos.";
+            $error = "Usuario o Contraseña incorrectos.";
         }
 
         $mysqli->close();
@@ -73,12 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 			<h1><b>Login</b></h1>
 		<fieldset>
+		<?php if (!empty(@$error)) : ?>
+        	<div style="color: #8C1313;"><?php echo @$error; ?></div>
+    	<?php endif; ?>
             <label for="usuario">Introduzca Su Usuario</label>		
-			<input value = "<?php if(isset($_POST['usuario']))echo $_POST['usuario'];?>"
-				id = "usuario" name = "usuario" type = "text">
+			<input <?php echo (@$error) ? 'class="error"' : ''; ?> value = "<?php if(isset($_POST['usuario']))echo $_POST['usuario'];?>"
+				id = "usuario" name = "usuario" type = "text" required>
             <br><br>
             <label for="clave">Introduzca Su Contraseña</label>			
-			<input id = "clave" name = "clave" type = "password">
+			<input <?php echo (@$error) ? 'class="error"' : ''; ?> id = "clave" name = "clave" type = "password" required>
 		</fieldset>						
 			<input type = "submit">
 			<p>No Tienes una Cuenta?            <a href="Registro.php">SignUp</a></p>

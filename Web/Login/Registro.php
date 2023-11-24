@@ -2,21 +2,8 @@
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {  	
 	
-		//Confirmo que el Usuario este Rellenado
-		if($_POST['usuario'] == ""){
-			@$error = $error . "<br>-Es Obligatorio Rellenar el Campo de usuario";
-		}
-        if($_POST['email'] == ""){
-			@$error = $error . "<br>-Es Obligatorio Rellenar el Campo de Email";
-		}
-        if($_POST['clave1'] == ""){
-			@$error = $error . "<br>-Es Obligatorio Rellenar el Campo de Contraseña";
-		}
-        if($_POST['clave2'] == ""){
-			@$error = $error . "<br>-Las Contraseñas Tienen que Coincidir";
-		}
         if($_POST['clave2'] != $_POST['clave1']){
-			@$error = $error . "<br>-Las Contraseñas No Coinciden";
+			@$errorClave = "<br>-Las Contraseñas No Coinciden";
 		}
 	}
 		if(isset($error)){
@@ -37,24 +24,22 @@
             $result = $mysqli->query("SELECT * FROM users WHERE BINARY usuario = '$user'");
             //Compruebo Usuario
             if ($result->num_rows > 0) {
-                echo "<br>-Nombre de Usuario ya Existe";
-                @$error = $error . "<br>-Nombre de Usuario ya Existe";
+                @$errorUsu = "<br>-Nombre de Usuario ya Existe";
             }
             //Compruebo Correo
             $result = $mysqli->query("SELECT * FROM users WHERE BINARY correo = '$correo'");
 
             if($result->num_rows > 0) {
-                echo "<br>-Ya Existe una Cuenta Asociada a este Correo";
-                $error = $error . "<br>-Ya Existe una Cuenta Asociada a este Correo";
-            }
+                @$errorEmail = "<br>-Ya Existe una Cuenta Asociada a este Correo";
+            }else{
 			//Encripto la Contraseña
 			$clave_hash = password_hash($clave, PASSWORD_DEFAULT);
 			if(!isset($error) && $_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt = $mysqli->prepare("INSERT INTO users (usuario, clave, correo) VALUES (?, ?, ?)");
                 $stmt->bind_param("sss", $user, $clave_hash, $correo);
                 $stmt->execute();
-                echo "Cuenta Creado Con Exito!";
-            }
+                $ok = "Cuenta Creado Con Exito!";
+            }}
         }
 
 ?>
@@ -73,21 +58,31 @@
 	</div>
 	<script src="script.js"></script>
 		<form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
+			<p><?php echo @$ok; ?></p>
 			<h1><b>Register</b></h1>
 			<fieldset>
+			<?php if (!empty(@$errorUsu)) : ?>
+        		<div style="color: #8C1313;"><?php echo @$errorUsu; ?></div>
+    		<?php endif; ?>
             <label for="usuario">Usuario</label>		
-			<input value = "<?php if(isset($_POST['usuario']))echo $_POST['usuario'];?>"
-				id = "usuario" name = "usuario" type = "text">
+			<input <?php echo (@$errorUsu) ? 'class="error"' : ''; ?> value = "<?php if(isset($_POST['usuario']))echo $_POST['usuario'];?>"
+				id = "usuario" name = "usuario" type = "text" required>
             <br>
+			<?php if (!empty(@$errorEmail)) : ?>
+        		<div style="color: #8C1313;"><?php echo @$errorEmail; ?></div>
+    		<?php endif; ?>
             <label for="email">Correo Electronico</label>			
-			<input value = "<?php if(isset($_POST['email']))echo $_POST['email'];?>"
-                id = "email" name = "email" type = "email">
+			<input <?php echo (@$errorEmail) ? 'class="error"' : ''; ?> value = "<?php if(isset($_POST['email']))echo $_POST['email'];?>"
+                id = "email" name = "email" type = "email" required>
             <br>
+			<?php if (!empty(@$errorClave)) : ?>
+        		<div style="color: #8C1313;"><?php echo @$errorClave; ?></div>
+    		<?php endif; ?>
             <label for="clave1">Contraseña</label>			
-			<input id = "clave1" name = "clave1" type = "password">
+			<input <?php echo (@$errorClave) ? 'class="error"' : ''; ?> id = "clave1" name = "clave1" type = "password" required>
             <br>
             <label for="clave2">Confirme Contraseña</label>			
-			<input id = "clave2" name = "clave2" type = "password">
+			<input <?php echo (@$errorClave) ? 'class="error"' : ''; ?> id = "clave2" name = "clave2" type = "password" required>
 			</fieldset>						
 			<input type = "submit">
 			<p>Ya Tienes una Cuenta?            <a href="Login.php">SignIn</a></p>

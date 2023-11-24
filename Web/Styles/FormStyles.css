@@ -24,8 +24,12 @@ body {
 
 #datosUsuario p {
 	font-family: arial;
+	color: #eee;
 	margin: 10px 5em;
 	font-size: 1.25rem;
+}
+.light-mode #datosUsuario p {
+	color: #000000;
 }
 
 form {
@@ -137,6 +141,10 @@ input:focus,
 textarea:focus {
 	transform: scale(1.02);
 	transition: transform 0.3s ease;
+}
+
+.error {
+    background-color: #FFD2D2;
 }
 
 /*Inicio de Dark/Light Mode Button*/

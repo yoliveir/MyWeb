@@ -113,6 +113,10 @@ textarea:focus {
 	transition: transform 0.3s ease;
 }
 
+.error {
+    background-color: #FFD2D2;
+}
+
 /*Inicio de Dark/Light Mode Button*/
 .toggle-switch {
 	position: fixed; /* Cambiado a posición fija para que se mantenga en la esquina superior izquierda */
