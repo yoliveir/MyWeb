@@ -1,0 +1,204 @@
+body {
+	background-color: #12171c;
+	transition: background-color 0.5s, color 0.5s;
+	color: #eee;
+	font-size: 16px;
+}
+
+#content {
+	text-align: center;
+	padding: 20px;
+}
+
+.light-mode {
+	background-color: #E5E5E5;
+	color: #000000;
+}
+
+#datosUsuario {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+#datosUsuario p {
+	font-family: arial;
+	margin: 10px 5em;
+	font-size: 1.25rem;
+}
+
+form {
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 4%;
+	background-color: #01c29a;
+	padding: 1em;
+	padding-top: 0;
+	border: 0.125em solid #01b58a;
+	border-radius: 0.1875em;
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.2);
+}
+
+.light-mode form {
+	background-color: #b5eadb;
+	border: 0.125em solid #83dec4;
+}
+
+fieldset {
+	margin: 1%;
+	background-color: #109976;
+	padding: 1em;
+	padding-top: 0;
+	border: 0.125em solid #01c29a;
+	border-radius: 0.1875em;
+}
+
+.light-mode fieldset {
+	background-color: #83dec4;
+	border: 0.125em solid #01c29a;
+}
+
+label {
+	display: block;
+	margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"],
+input[type="password"],
+textarea {
+	width: 60%;
+	padding: 0.3125em;
+	margin-top: 0.3125em;
+	border: 0.125em solid #1a5420;
+	border-radius: 0.1875em;
+	outline-color: #1a5420;
+}
+
+input[type="checkbox"] {
+	width: 3%;
+	padding: 0.3125em;
+	margin-top: 0.3125em;
+	border: 0.125em solid #1a5420;
+	border-radius: 0.1875em;
+	outline-color: #1a5420;
+}
+
+select {
+	width: 20%;
+	padding: 0.3125em;
+	margin-top: 0.3125em;
+	border: 0.125em solid #1a5420;
+	border-radius: 0.1875em;
+	outline-color: #1a5420;
+}
+
+input[type="submit"] {
+	background-color: #2f8be0;
+	padding: 0.625em 1.25em;
+	border: none;
+	border-radius: 0.1875em;
+	cursor: pointer;
+	color: #eee;
+	margin: 0.5em;
+}
+
+.light-mode input[type="submit"] {
+	text-align: center;
+	color: #000000;
+	margin-bottom: 1.25em;
+}
+
+h1 {
+	text-align: center;
+	color: #eee;
+	margin-bottom: 1.25em;
+}
+
+.light-mode h1 {
+	text-align: center;
+	color: #000000;
+	margin-bottom: 1.25em;
+}
+
+p {
+	color: #060f07;
+}
+
+input[type="submit"]:hover {
+	background-color: #0069D9;
+	border-color: #0062CC;
+	transition: background-color 0.5s, color 0.5s;
+}
+
+input:focus,
+textarea:focus {
+	transform: scale(1.02);
+	transition: transform 0.3s ease;
+}
+
+/*Inicio de Dark/Light Mode Button*/
+.toggle-switch {
+	position: relative;
+	width: 100px;
+	height: 50px;
+	--light: #d8dbe0;
+	--dark: #28292c;
+	--link: rgb(27, 129, 112);
+	--link-hover: rgb(24, 94, 82);
+  }
+  
+  .switch-label {
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	background-color: var(--dark);
+	border-radius: 25px;
+	cursor: pointer;
+	border: 3px solid var(--dark);
+  }
+  
+  .checkbox {
+	position: absolute;
+	display: none;
+  }
+  
+  .slider {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+  }
+  
+  .checkbox:checked ~ .slider {
+	background-color: var(--light);
+  }
+  
+  .slider::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	-webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
+	box-shadow: inset 12px -4px 0px 0px var(--light);
+	background-color: var(--dark);
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+  }
+  
+  .checkbox:checked ~ .slider::before {
+	-webkit-transform: translateX(50px);
+	-ms-transform: translateX(50px);
+	transform: translateX(50px);
+	background-color: var(--dark);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+  }
+/*Fin de Dark/Light Botton*/  

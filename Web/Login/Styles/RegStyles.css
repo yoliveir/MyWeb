@@ -1,0 +1,180 @@
+body {
+	background-color: #12171c;
+	transition: background-color 0.5s, color 0.5s;
+	color: #eee;
+	font-size: 16px;
+	display: flex;
+	justify-content: center; /* Centra horizontalmente el contenido */
+	align-items: center; /* Centra verticalmente el contenido */
+	height: 100vh; /* Utiliza el 100% de la altura del viewport */
+	margin: 0; /* Elimina el margen predeterminado del body */
+}
+.light-mode {
+	background-color: #E5E5E5;
+	color: #000000;
+}
+
+form {
+	width: 30%; /* Ancho del formulario ajustado al 50% del contenedor */
+	background-color: #01c29a;
+	border: 0.125em solid #01b58a;
+	border-radius: 0.1875em;
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.2);
+	padding: 1em; /* Ajusta el relleno según sea necesario */
+}
+.light-mode form {
+	background-color: #b5eadb;
+	border: 0.125em solid #83dec4;
+}
+
+fieldset {
+	background-color: #109976;
+	border: 0.125em solid #01c29a;
+	border-radius: 0.1875em;
+}
+.light-mode fieldset {
+	background-color: #83dec4;
+	border: 0.125em solid #01c29a;
+}
+
+h1 {
+	text-align: center; /* Centra el texto horizontalmente */
+	color: #eee;
+	margin-bottom: 1em; /* Ajusta el margen inferior según sea necesario */
+}
+.light-mode h1 {
+	text-align: center;
+	color: #000000;
+}
+
+h2 {
+	color: #060f07;
+}
+
+label {
+	display: block;
+	margin-top: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+	width: 70%; /* Ancho del campo de entrada al 100% del contenedor */
+	padding: 5px;
+	margin-top: 5px;
+	margin-left: 80px;
+	border-radius: 3px;
+	box-sizing: border-box; /* Incluye el relleno y el borde en el ancho total */
+}
+
+label[for="usuario"],
+label[for="email"],
+label[for="clave1"],
+label[for="clave2"]{
+	margin-left: 80px;
+}
+
+label[for="usuario"]{
+	margin-left: 80px;
+	margin-top: 25px;
+}
+
+input[id="clave2"]{
+	margin-bottom: 25px;
+}
+
+input[type="submit"] {
+	background-color: #2f8be0;
+	color: #eee;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	display: block; /* Hace que el botón ocupe todo el ancho disponible */
+	margin-top: 1em; /* Ajusta el margen superior según sea necesario */
+	margin-left: auto; /* Centra horizontalmente el botón */
+	margin-right: auto; /* Centra horizontalmente el botón */
+}
+.light-mode input[type="submit"] {
+	text-align: center;
+	color: #000000;
+	margin-bottom: 1.25em;
+}
+
+input[type="submit"]:hover {
+	background-color: #0069D9;
+	border-color: #0062CC;
+	transition: background-color 0.5s, color 0.5s;
+}
+
+input:focus,
+textarea:focus {
+	transform: scale(1.02);
+	transition: transform 0.3s ease;
+}
+
+/*Inicio de Dark/Light Mode Button*/
+.toggle-switch {
+	position: fixed; /* Cambiado a posición fija para que se mantenga en la esquina superior izquierda */
+	top: 10px; /* Ajusta según sea necesario */
+	left: 10px; /* Ajusta según sea necesario */
+	width: 100px;
+	height: 50px;
+	--light: #d8dbe0;
+	--dark: #28292c;
+	--link: rgb(27, 129, 112);
+	--link-hover: rgb(24, 94, 82);
+}
+
+.switch-label {
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	background-color: var(--dark);
+	border-radius: 25px;
+	cursor: pointer;
+	border: 3px solid var(--dark);
+}
+
+.checkbox {
+	position: absolute;
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider {
+	background-color: var(--light);
+}
+
+.slider::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	-webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
+	box-shadow: inset 12px -4px 0px 0px var(--light);
+	background-color: var(--dark);
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider::before {
+	-webkit-transform: translateX(50px);
+	-ms-transform: translateX(50px);
+	transform: translateX(50px);
+	background-color: var(--dark);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+/*Fin de Dark/Light Botton*/
