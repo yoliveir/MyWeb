@@ -40,7 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			header('Location: http://localhost/MyWeb/Web/Formulario.php');
         } else {
             $error = "Usuario o Contraseña incorrectos.";
+			$i += 1;
         }
+		$i = 0;
 
         $mysqli->close();
     }
@@ -76,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</fieldset>						
 			<input type = "submit">
 			<p>No Tienes una Cuenta?            <a href="Registro.php">SignUp</a></p>
+			<?php if($i = 4){echo "<p>Olvidaste Su Contraseña o Usuario?            <a href=\"recover.php\">Clica Aqui!</a></p>";}?>
 		</form>
 	</body> 
 </html>
