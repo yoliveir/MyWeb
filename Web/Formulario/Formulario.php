@@ -77,6 +77,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<link rel="stylesheet" href="Styles/FormStyles.css">
 </head>
 <body>
+<header>
+            <a class="logo" href="/"><img src="images/logo.svg" alt="logo"></a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="../Login/Login.php">Login</a>
+        </header>
 	<?php session_start();?>
 	<div class="toggle-switch">
   		<label class="switch-label">
@@ -84,8 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<span class="slider"></span>
   		</label>
 	</div>
-
-<script src="../Scripts/dark_light.js"></script>
 
 <h1>Formulario (Venda de Productos)</h1>
 

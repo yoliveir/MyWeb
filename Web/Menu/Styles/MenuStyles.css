@@ -1,0 +1,31 @@
+nav {
+    background-color: #444;
+    color: #fff;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Exemplo: Largura máxima da barra de navegação */
+    margin: 0 auto; /* Centraliza a barra de navegação */
+    width: 100%; /* Utiliza a largura máxima disponível */
+    transition: background-color 0.9s ease;
+	box-sizing: border-box;
+}
+
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1em;
+    margin: 0 0.5em; /* Ajuste as margens conforme necessário */
+}
+
+.login-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 0.5em; /* Ajuste as margens conforme necessário */
+}
