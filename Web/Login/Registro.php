@@ -56,7 +56,7 @@
 		<span class="slider"></span>
   		</label>
 	</div>
-	<script src="script.js"></script>
+	<script src="../Scripts/dark_light.js"></script>
 		<form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 			<p><?php echo @$ok; ?></p>
 			<h1><b>Register</b></h1>

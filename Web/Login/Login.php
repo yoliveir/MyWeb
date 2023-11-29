@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<span class="slider"></span>
   		</label>
 	</div>
-	<script src="script.js"></script>
+	<script src="../Scripts/dark_light.js"></script>
 		<form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 			<h1><b>Login</b></h1>
 		<fieldset>

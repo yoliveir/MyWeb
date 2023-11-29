@@ -23,19 +23,20 @@ body {
 }
 
 #datosUsuario p {
-	font-family: arial;
-	color: #eee;
-	margin: 10px 5em;
-	font-size: 1.25rem;
+    font-family: arial;
+    color: #eee;
+    margin: 10px 1em; /* Ajusta el valor según sea necesario */
+    font-size: 1.25rem;
 }
+
 .light-mode #datosUsuario p {
 	color: #000000;
 }
 
 form {
-	margin-left: 25%;
-	margin-right: 25%;
-	margin-top: 4%;
+	width: 60%;
+    margin: 0 auto;
+	margin-top: 2%;
 	background-color: #01c29a;
 	padding: 1em;
 	padding-top: 0;
@@ -43,7 +44,6 @@ form {
 	border-radius: 0.1875em;
 	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.2);
 }
-
 .light-mode form {
 	background-color: #b5eadb;
 	border: 0.125em solid #83dec4;
@@ -57,7 +57,6 @@ fieldset {
 	border: 0.125em solid #01c29a;
 	border-radius: 0.1875em;
 }
-
 .light-mode fieldset {
 	background-color: #83dec4;
 	border: 0.125em solid #01c29a;
@@ -73,9 +72,9 @@ input[type="email"],
 input[type="file"],
 input[type="password"],
 textarea {
-	width: 60%;
-	padding: 0.3125em;
-	margin-top: 0.3125em;
+	width: 90%; /* Alterado para 90% para melhor ajuste */
+	padding: 0.5em; /* Alterado para 0.5em para melhor ajuste */
+	margin-top: 0.5em; /* Alterado para 0.5em para melhor ajuste */
 	border: 0.125em solid #1a5420;
 	border-radius: 0.1875em;
 	outline-color: #1a5420;
@@ -91,9 +90,9 @@ input[type="checkbox"] {
 }
 
 select {
-	width: 20%;
-	padding: 0.3125em;
-	margin-top: 0.3125em;
+	width: 90%; /* Alterado para 90% para melhor ajuste */
+	padding: 0.5em; /* Alterado para 0.5em para melhor ajuste */
+	margin-top: 0.5em; /* Alterado para 0.5em para melhor ajuste */
 	border: 0.125em solid #1a5420;
 	border-radius: 0.1875em;
 	outline-color: #1a5420;
@@ -108,7 +107,6 @@ input[type="submit"] {
 	color: #eee;
 	margin: 0.5em;
 }
-
 .light-mode input[type="submit"] {
 	text-align: center;
 	color: #000000;
@@ -120,7 +118,6 @@ h1 {
 	color: #eee;
 	margin-bottom: 1.25em;
 }
-
 .light-mode h1 {
 	text-align: center;
 	color: #000000;
@@ -144,7 +141,7 @@ textarea:focus {
 }
 
 .error {
-    background-color: #FFD2D2;
+	background-color: #FFD2D2;
 }
 
 /*Inicio de Dark/Light Mode Button*/
@@ -156,9 +153,9 @@ textarea:focus {
 	--dark: #28292c;
 	--link: rgb(27, 129, 112);
 	--link-hover: rgb(24, 94, 82);
-  }
-  
-  .switch-label {
+}
+
+.switch-label {
 	position: absolute;
 	width: 100%;
 	height: 50px;
@@ -166,27 +163,27 @@ textarea:focus {
 	border-radius: 25px;
 	cursor: pointer;
 	border: 3px solid var(--dark);
-  }
-  
-  .checkbox {
+}
+
+.checkbox {
 	position: absolute;
 	display: none;
-  }
-  
-  .slider {
+}
+
+.slider {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	border-radius: 25px;
 	-webkit-transition: 0.3s;
 	transition: 0.3s;
-  }
-  
-  .checkbox:checked ~ .slider {
+}
+
+.checkbox:checked ~ .slider {
 	background-color: var(--light);
-  }
-  
-  .slider::before {
+}
+
+.slider::before {
 	content: "";
 	position: absolute;
 	top: 10px;
@@ -199,14 +196,14 @@ textarea:focus {
 	background-color: var(--dark);
 	-webkit-transition: 0.3s;
 	transition: 0.3s;
-  }
-  
-  .checkbox:checked ~ .slider::before {
+}
+
+.checkbox:checked ~ .slider::before {
 	-webkit-transform: translateX(50px);
 	-ms-transform: translateX(50px);
 	transform: translateX(50px);
 	background-color: var(--dark);
 	-webkit-box-shadow: none;
 	box-shadow: none;
-  }
-/*Fin de Dark/Light Botton*/  
+}
+/*Fin de Dark/Light Botton*/

@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   		</label>
 	</div>
 
-<script src="script.js"></script>
+<script src="../Scripts/dark_light.js"></script>
 
 <h1>Formulario (Venda de Productos)</h1>
 
