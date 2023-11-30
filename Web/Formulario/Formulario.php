@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <header>
-            <a class="logo" href="/"><img src="images/logo.svg" alt="logo"></a>
+            <a class="logo" href="../Menu/Menu.php"><img class="logo" src="../Menu/Styles/darkLogo.png" alt="logo"></a>
             <nav>
                 <ul class="nav__links">
                     <li><a href="#">Services</a></li>
@@ -95,12 +95,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<span class="slider"></span>
   		</label>
 	</div>
-
-<h1>Formulario (Venda de Productos)</h1>
+    <script src="../Scripts/dark_light.js"></script>
 
 <br>
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+<h1>Formulario (Venda de Productos)</h1>
 <fieldset>
 	<div id="datosUsuario">
 	<p>User: <b><?php echo isset($_SESSION['user']) ? $_SESSION['user'] : ''; ?></b></p>

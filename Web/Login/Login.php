@@ -54,6 +54,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="Styles\LoginStyles.css">
 	</head>
 	<body>	
+	<header>
+            <a class="logo" href="../Menu/Menu.php"><img class="logo" src="../Menu/Styles/darkLogo.png" alt="logo"></a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
 	<div class="toggle-switch">
   		<label class="switch-label">
     	<input type="checkbox" class="checkbox" id="themeToggle">
@@ -75,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<input <?php echo (@$error) ? 'class="error"' : ''; ?> id = "clave" name = "clave" type = "password" required>
 		</fieldset>						
 			<input type = "submit">
+            <br>
 			<p>No Tienes una Cuenta?            <a href="Registro.php">SignUp</a></p>
 		</form>
 	</body> 

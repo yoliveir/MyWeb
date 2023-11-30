@@ -1,31 +1,126 @@
-nav {
-    background-color: #444;
-    color: #fff;
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px; /* Exemplo: Largura máxima da barra de navegação */
-    margin: 0 auto; /* Centraliza a barra de navegação */
-    width: 100%; /* Utiliza a largura máxima disponível */
-    transition: background-color 0.9s ease;
+/*Inicio de Dark/Light Mode Button*/
+.toggle-switch {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	width: 100px;
+	height: 50px;
+	--light: #d8dbe0;
+	--dark: #28292c;
+	--link: rgb(27, 129, 112);
+	--link-hover: rgb(24, 94, 82);
+}
+
+.switch-label {
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	background-color: var(--dark);
+	border-radius: 25px;
+	cursor: pointer;
+	border: 3px solid var(--dark);
+}
+
+.checkbox {
+	position: absolute;
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider {
+	background-color: var(--light);
+}
+
+.slider::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	-webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
+	box-shadow: inset 12px -4px 0px 0px var(--light);
+	background-color: var(--dark);
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider::before {
+	-webkit-transform: translateX(50px);
+	-ms-transform: translateX(50px);
+	transform: translateX(50px);
+	background-color: var(--dark);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+/*Fin de Dark/Light Botton*/
+/*Inicio NavBar*/
+* {
 	box-sizing: border-box;
-}
-
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 1em;
-    margin: 0 0.5em; /* Ajuste as margens conforme necessário */
-}
-
-.login-button {
-    background-color: #28a745;
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.5em; /* Ajuste as margens conforme necessário */
-}
+	margin: 0;
+	padding: 0;
+  }
+  
+  header {
+	height: 78px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 10%;
+	background-color: #24252a;
+  }
+  
+  .logo {
+	cursor: pointer;
+	max-width: 20%;
+    height: auto;
+  }
+  
+  .nav__links a,
+  .cta {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	text-decoration: none;
+  }
+  
+  .nav__links {
+	list-style: none;
+	display: flex;
+	margin-left: -39%;
+  }
+  
+  .nav__links li {
+	padding: 0px 20px;
+  }
+  
+  .nav__links li a {
+	transition: color 0.3s ease 0s;
+  }
+  
+  .nav__links li a:hover {
+	color: #0088a9;
+  }
+  
+  .cta {
+	padding: 9px 25px;
+	background-color: rgba(0, 136, 169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: background-color 0.3s ease 0s;
+  }
+  
+  .cta:hover {
+	background-color: rgba(0, 136, 169, 0.8);
+  }
+/*Fin NavBar*/

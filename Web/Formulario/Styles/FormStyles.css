@@ -158,7 +158,9 @@ textarea:focus {
 
 /*Inicio de Dark/Light Mode Button*/
 .toggle-switch {
-	position: relative;
+	position: fixed;
+	top: 10px;
+	left: 10px;
 	width: 100px;
 	height: 50px;
 	--light: #d8dbe0;
@@ -227,6 +229,7 @@ textarea:focus {
   }
   
   header {
+	height: 78px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -236,6 +239,8 @@ textarea:focus {
   
   .logo {
 	cursor: pointer;
+	max-width: 20%;
+    height: auto;
   }
   
   .nav__links a,
@@ -249,6 +254,7 @@ textarea:focus {
   .nav__links {
 	list-style: none;
 	display: flex;
+	margin-left: -39%;
   }
   
   .nav__links li {
@@ -274,21 +280,5 @@ textarea:focus {
   
   .cta:hover {
 	background-color: rgba(0, 136, 169, 0.8);
-  }
-  
-  /* Mobile Nav */
-  
-  .menu {
-	display: none;
-  }
-  
-  @media only screen and (max-width: 800px) {
-	.nav__links,
-	.cta {
-	  display: none;
-	}
-	.menu {
-	  display: initial;
-	}
   }
 /*Fin NavBar*/
